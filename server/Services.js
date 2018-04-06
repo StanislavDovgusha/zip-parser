@@ -6,8 +6,9 @@ class Services {
   static getControllers() {
     let controllers = [];
     // add controlers 
-    controllers.push(new TestController('tests').getController());
-    controllers.push(new InfoController('info').getController());
+    console.log(global.CONFIG['DIR_TEST_SUITS']);
+    controllers.push(new TestController("tests", global.CONFIG['DIR_TEST_SUITS']).getController());
+    controllers.push(new InfoController("info").getController());
 
     return controllers;
   }

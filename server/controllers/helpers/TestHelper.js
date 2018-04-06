@@ -67,6 +67,7 @@ class TestHelper {
    * 
    */
   getNameArchives(pathDir, callback) {
+    console.log(pathDir);
     let names = [];
     fs.readdir(pathDir, (error, files) => {
       let pathChild = pathDir;

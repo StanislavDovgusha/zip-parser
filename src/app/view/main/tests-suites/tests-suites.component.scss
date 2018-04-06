@@ -1,0 +1,37 @@
+.content-suite {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    flex-wrap: wrap;
+    font-size: 0.9em;
+    padding: 5px;
+    min-height: 100%;
+}
+
+.filter {
+    padding: 5px;
+    border-right: solid 1px;
+    width: 200px;
+    min-width: 150px;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+}
+
+.spinner {
+    width: 100%;
+    height: 100%;
+}
+
+
+.suites-name {
+    span {
+        padding-right: 10px;
+    }
+    span:first-child {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+    }
+}

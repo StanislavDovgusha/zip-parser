@@ -9,9 +9,10 @@ const DIR_TEST_SUITE_ZIP = 'experiments';
 
 class TestController extends IController {
 
-  constructor(name) {
+  constructor(name, pathStore) {
     super(name);
     this.router = express.Router();
+    this.pathStore = pathStore;
   }
 
   getController() {

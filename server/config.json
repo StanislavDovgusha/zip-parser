@@ -1,4 +1,5 @@
 {
-  "SERVER_PORT": "30000",
-  "VERSION": "1.0.1"
+  "SERVER_PORT": "3000",
+  "DIR_TEST_SUITS": "experiments",
+  "VERSION": "1.0.0"
 }

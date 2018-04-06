@@ -1,0 +1,68 @@
+<div fxLayout="column" class="conteiner">
+  <ng-template ngFor let-space [ngForOf]="spaces">
+    <div (click)="openSpace(space)" [ngClass]="space.isSelected ? 'fa fa-arrow-circle-down' : 'fa fa-arrow-circle-right' "
+      class="space-name">
+      <span>{{space.name}}</span>
+    </div>
+    <div *ngIf="space.isSelected" class="space">
+      <ng-template ngFor let-suite [ngForOf]="space.suites">
+        <div [ngClass]="suite.isSelected ? 'fa fa-arrow-circle-down' : 'fa fa-arrow-circle-right' " (click)="select(suite)"
+          class="info">
+          <span>{{suite.archiveName}}</span>
+          <div fxFlex></div>
+          <div>
+            Pass:
+            <span>{{suite.totalPass}} </span>
+            Fail:
+            <span> {{suite.totalFail}}</span>
+          </div>
+        </div>
+        <div *ngIf="suite.isSelected" class="test-case-table">
+          <p-table #dt dataKey="name" [scrollable]="true" [columns]="cols" [value]="suite.cases" scrollHeight="350px">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th class="cel-index">№</th>
+                <th *ngFor="let col of columns" [ngClass]="col.className" [pSortableColumn]="col.field">
+                  {{col.header}}
+                  <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+              </tr>
+              <tr>
+                <th></th>
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                  <input *ngSwitchCase="'name'" class="filter" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-expanded="expanded" let-rowIndex="rowIndex" let-rowData let-columns="columns">
+              <tr>
+                <td class="cel-index">
+                  <a href="#" [pRowToggler]="rowData">
+                    <i [ngClass]="expanded ? 'fa fa-fw fa-chevron-circle-down' : 'fa fa-fw fa-chevron-circle-right'"></i>
+                  </a>
+                  {{rowIndex + 1 }}
+                </td>
+                <td [ngClass]="rowData.isOk ? '': 'cel-name-warning'">
+                  {{rowData.name}}
+                </td>
+                <td class="cel-number cel-pass">
+                  {{rowData.pass}}
+                </td>
+                <td class="cel-number" [ngClass]=" rowData.fail > 0 ? 'cel-fail-ero' : '' ">
+                  {{rowData.fail}}
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+              <tr>
+                <td [attr.colspan]="columns.length + 1" class="line-breaker">
+                  {{rowData.body}}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+.app-view-outlet {
+    position: relative;
+}
+
+.app-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.ui-table,
+.ui-table-scrollable-wrapper,
+.ui-table-scrollable-wrapper>div {
+    height: 100%;
+}
+
+tr:nth-child(2n) {
+    background: #faf9f9;
+}
+
+tr:nth-child(1) {
+    background: #ffffff;
+}

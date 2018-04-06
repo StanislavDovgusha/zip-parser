@@ -1,0 +1,17 @@
+<div fxLayout="column" fxFill class="app-container">
+  <div fxLayout="row" class="content" fxFlex>
+    <div class="content-suite" *ngIf="isSpinner" fxFlex>
+      <p-accordion (onOpen)="getSuits($event)">
+        <ng-template ngFor let-archive [ngForOf]="archives">
+          <p-accordionTab [header]="archive">
+            <app-tests-case *ngIf="selectedArchive" [suites]="selectedArchive"></app-tests-case>
+            <div *ngIf="!selectedArchive">Loading...</div>
+          </p-accordionTab>
+        </ng-template>
+      </p-accordion>
+    </div>
+    <div class="spinner" *ngIf="!isSpinner">
+      <app-spinner [global]="false"></app-spinner>
+    </div>
+  </div>
+</div>
